@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import MachineList from "./components/MachineList";
+import MachineDetails from "./components/MachineDetails";
+import Layout from "./components/Layout";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<MachineList />} />
+        <Route path="/machine/:id" element={<MachineDetails />} />
+      </Route>
+    </Routes>
   );
 }
 
 export default App;
+
+// import React from "react";
+
+// import "./App.css";
+
+// import Layout from "./Layout";
+// import MachineList from "./components/MachineList";
+
+// function App() {
+//   return (
+//     <Layout>
+//       <MachineList />
+//     </Layout>
+//   );
+// }
+
+// export default App;

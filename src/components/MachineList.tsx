@@ -1,129 +1,30 @@
+import { FC } from "react";
 import { Link, useNavigate } from "react-router-dom";
 const statuses = {
   Online: "text-green-400 bg-green-400/10",
   Offline: "text-rose-400 bg-rose-400/10",
 };
 
-const machines = [
-  {
-    name: "Walton",
-    softwareVersion: "v1.2.3",
-    status: "Online",
-    lastActive: "45 minutes ago",
-    dateTime: "2023-01-23T11:00",
-  },
-  {
-    name: "Marcus",
-    softwareVersion: "v1.2.1",
-    status: "Offline",
-    lastActive: "3 hours ago",
-    dateTime: "2023-01-23T09:00",
-  },
-  {
-    name: "Jenny",
-    softwareVersion: "v1.2.0",
-    status: "Online",
-    lastActive: "12 hours ago",
-    dateTime: "2023-01-23T00:00",
-  },
-  {
-    name: "Silver",
-    softwareVersion: "v1.1.9",
-    status: "Online",
-    lastActive: "1 day ago",
-    dateTime: "2023-01-22T13:00",
-  },
-  {
-    name: "Apollo",
-    softwareVersion: "v1.2.5",
-    status: "Offline",
-    lastActive: "2 days ago",
-    dateTime: "2023-01-21T10:34",
-  },
-  {
-    name: "Zeus",
-    softwareVersion: "v1.3.0",
-    status: "Online",
-    lastActive: "2 days ago",
-    dateTime: "2023-01-21T08:54",
-  },
-  {
-    name: "Athena",
-    softwareVersion: "v1.2.8",
-    status: "Online",
-    lastActive: "5 days ago",
-    dateTime: "2023-01-18T09:31",
-  },
-  {
-    name: "Hera",
-    softwareVersion: "v1.1.5",
-    status: "Offline",
-    lastActive: "1 week ago",
-    dateTime: "2023-01-16T11:45",
-  },
-  {
-    name: "Poseidon",
-    softwareVersion: "v1.0.7",
-    status: "Online",
-    lastActive: "1 week ago",
-    dateTime: "2023-01-15T19:20",
-  },
-  {
-    name: "Hermes",
-    softwareVersion: "v1.3.1",
-    status: "Offline",
-    lastActive: "2 weeks ago",
-    dateTime: "2023-01-09T12:45",
-  },
-  {
-    name: "Ares",
-    softwareVersion: "v1.1.1",
-    status: "Online",
-    lastActive: "2 weeks ago",
-    dateTime: "2023-01-09T08:30",
-  },
-  {
-    name: "Hestia",
-    softwareVersion: "v1.0.5",
-    status: "Offline",
-    lastActive: "3 weeks ago",
-    dateTime: "2023-01-02T17:25",
-  },
-  {
-    name: "Demeter",
-    softwareVersion: "v1.2.6",
-    status: "Online",
-    lastActive: "1 month ago",
-    dateTime: "2022-12-25T11:15",
-  },
-  {
-    name: "Dionysus",
-    softwareVersion: "v1.0.9",
-    status: "Offline",
-    lastActive: "1 month ago",
-    dateTime: "2022-12-24T14:05",
-  },
-  {
-    name: "Artemis",
-    softwareVersion: "v1.1.0",
-    status: "Online",
-    lastActive: "1 month ago",
-    dateTime: "2022-12-22T10:00",
-  },
-];
-
 //@ts-ignore
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function MachineList() {
+interface MachineDetails {
+  name: string;
+  softwareVersion: string;
+  status: string;
+  lastActive: string;
+  dateTime: string;
+}
+
+interface MachineListProps {
+  machines: MachineDetails[];
+}
+const MachineList: FC<MachineListProps> = (props) => {
   const navigate = useNavigate();
   return (
-    <div className=" py-10">
-      <h2 className="px-4 text-base font-semibold leading-7 text-gray-900 sm:px-6 lg:px-8">
-        Your Machines
-      </h2>
+    <div className="py-4">
       <table className="mt-6 w-full whitespace-nowrap text-left">
         <colgroup>
           <col className="w-full sm:w-4/12" />
@@ -161,7 +62,7 @@ export default function MachineList() {
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200">
-          {machines.map((machine) => (
+          {props.machines.map((machine) => (
             <tr
               key={machine.name}
               className="hover:bg-gray-50 cursor-pointer w-full"
@@ -208,4 +109,6 @@ export default function MachineList() {
       </table>
     </div>
   );
-}
+};
+
+export default MachineList;

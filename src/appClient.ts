@@ -7,13 +7,16 @@ export interface ViamCredentials {
   }
 
 export const getAppClient = async (credentials: ViamCredentials): Promise<ViamClient> => {
+
+    const { hostname, secret } = credentials;
+
     const credential = {
-        payload: '<API-KEY>',
+        payload: secret,
         type: 'api-key',
     };
 
     const dialOpts: DialOptions = {
-        authEntity: '<API-KEY-ID>',
+        authEntity: hostname, // @TODO: change naming
         credentials: credential,
     };
 

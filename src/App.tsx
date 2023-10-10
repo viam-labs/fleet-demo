@@ -24,7 +24,7 @@ function App() {
 
   return (
     <>
-      <h1 style={{textAlign: "center"}}>{status}</h1>
+      <h1 style={{textAlign: "center"}}>{"Robot: " + status + " / Viam App: " + appStatus}</h1>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<ConnectForm status={status} onSubmit={connectOrDisconnect} />} />

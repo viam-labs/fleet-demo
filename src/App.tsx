@@ -20,7 +20,7 @@ function App() {
   const [motionState, requestMotion] = useMotionControls(baseClient);
 
   // App.Viam.Com Client
-  const { status:appStatus, connectOrDisconnect:appConnectOrDisconnect } = appStore();
+  const { status:appStatus, connectOrDisconnect:appConnectOrDisconnect, client:appClient } = appStore();
 
   return (
     <>
@@ -30,14 +30,13 @@ function App() {
           <Route path="/" element={<ConnectForm status={status} onSubmit={connectOrDisconnect} />} />
           <Route path="/viamapp" element={<ConnectForm status={appStatus} onSubmit={appConnectOrDisconnect} />} />
           <Route path="/fleet" element={<FleetOverview />} />
-          <Route path="/machine/:id" element={<MachineDetails />} />
-          <Route path="/machine" element={<VideoStream stream={stream}>
+          <Route path="/machine/:id" element={<><MachineDetails /><VideoStream stream={stream}>
             {baseClient ? (
               <MotionArrows
                 motionState={motionState}
                 requestMotion={requestMotion}
               />
-            ) : null}</VideoStream>} />
+            ) : null}</VideoStream></>} />
         </Route>
       </Routes>
     </>

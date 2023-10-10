@@ -68,6 +68,6 @@ export const useStore = (): Store => {
     return {
         connectOrDisconnect: connectOrDisconnect,
         status: state.status,
-        client: state.status === CONNECTED ? state.client : undefined,
+        client: state.status === CONNECTED ? state.client : undefined
     };
 };

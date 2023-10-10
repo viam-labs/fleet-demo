@@ -15,11 +15,10 @@ import {
 import { Link, Outlet } from "react-router-dom";
 
 const navigation = [
-  { name: "Home", href: "/", icon: HomeIcon, current: true},
-  { name: "Fleet Overview", href: "/fleet", icon: HomeIcon, current:false },
-  { name: "Machine", href: "/machine", icon: HomeIcon, current:false },
-  { name: "Machine ID", href: "/machine/:id", icon: HomeIcon, current:false },
+  { name: "Machine Login", href: "/", icon: HomeIcon, current: true},
   { name: "App Login", href: "/viamapp", icon: HomeIcon, current:false },
+  { name: "Fleet Overview", href: "/fleet", icon: HomeIcon, current:false },
+  { name: "Machine ID", href: "/machine/:id", icon: HomeIcon, current:false }
   //   { name: "Locations", href: "#", icon: UsersIcon, current: false },
   //   { name: "Robots", href: "#", icon: UsersIcon, current: false },
 ];

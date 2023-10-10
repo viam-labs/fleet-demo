@@ -18,21 +18,13 @@ function App() {
 
   return (
     <>
-      <h1>{status}</h1>
+      <h1 style={{textAlign: "center"}}>{status}</h1>
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<><ConnectForm status={status} onSubmit={connectOrDisconnect} />
-            <VideoStream stream={stream}>
-              {baseClient ? (
-                <MotionArrows
-                  motionState={motionState}
-                  requestMotion={requestMotion}
-                />
-              ) : null}</VideoStream>
-          </>} />
-          <Route path="/machine/:id" element={<MachineDetails />} />
+          <Route path="/" element={<ConnectForm status={status} onSubmit={connectOrDisconnect} />} />
           <Route path="/fleet" element={<FleetOverview />} />
-          <Route path="/video" element={<VideoStream stream={stream}>
+          <Route path="/machine/:id" element={<MachineDetails />} />
+          <Route path="/machine" element={<VideoStream stream={stream}>
             {baseClient ? (
               <MotionArrows
                 motionState={motionState}

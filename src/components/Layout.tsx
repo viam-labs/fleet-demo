@@ -12,10 +12,13 @@ import {
   XMarkIcon,
   BuildingOfficeIcon,
 } from "@heroicons/react/24/outline";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const navigation = [
-  { name: "Fleet Overview", href: "/", icon: HomeIcon, current: true },
+  { name: "Home", href: "/", icon: HomeIcon, current: true},
+  { name: "Fleet Overview", href: "/fleet", icon: HomeIcon, current:false },
+  { name: "Machine", href: "/machine", icon: HomeIcon, current:false },
+  { name: "Machine ID", href: "/machine/:id", icon: HomeIcon, current:false },
   //   { name: "Locations", href: "#", icon: UsersIcon, current: false },
   //   { name: "Robots", href: "#", icon: UsersIcon, current: false },
 ];
@@ -103,8 +106,8 @@ export default function Layout(props) {
                           <ul role="list" className="-mx-2 space-y-1">
                             {navigation.map((item) => (
                               <li key={item.name}>
-                                <a
-                                  href={item.href}
+                                <Link 
+                                  to={item.href}
                                   className={classNames(
                                     item.current
                                       ? "bg-gray-800 text-white"
@@ -117,7 +120,7 @@ export default function Layout(props) {
                                     aria-hidden="true"
                                   />
                                   {item.name}
-                                </a>
+                                </Link>
                               </li>
                             ))}
                           </ul>
@@ -144,8 +147,8 @@ export default function Layout(props) {
                   <ul role="list" className="-mx-2 space-y-1">
                     {navigation.map((item) => (
                       <li key={item.name}>
-                        <a
-                          href={item.href}
+                        <Link
+                          to={item.href}
                           className={classNames(
                             item.current
                               ? "bg-gray-800 text-white"
@@ -158,7 +161,7 @@ export default function Layout(props) {
                             aria-hidden="true"
                           />
                           {item.name}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>

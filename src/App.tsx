@@ -10,11 +10,17 @@ import { useStore, useStream } from './state';
 import { VideoStream } from './components/VideoStream';
 import { MotionArrows } from './components/MotionArrows';
 import { useMotionControls } from './motion';
+import {useStore as appStore} from './appState'
 
 function App() {
+
+  // Robot Client
   const { status, connectOrDisconnect, streamClient, baseClient } = useStore();
   const stream = useStream(streamClient, 'cam');
   const [motionState, requestMotion] = useMotionControls(baseClient);
+
+  // App.Viam.Com Client
+  const { status:appStatus, connectOrDisconnect:appConnectOrDisconnect } = appStore();
 
   return (
     <>
@@ -22,6 +28,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<ConnectForm status={status} onSubmit={connectOrDisconnect} />} />
+          <Route path="/viamapp" element={<ConnectForm status={appStatus} onSubmit={appConnectOrDisconnect} />} />
           <Route path="/fleet" element={<FleetOverview />} />
           <Route path="/machine/:id" element={<MachineDetails />} />
           <Route path="/machine" element={<VideoStream stream={stream}>

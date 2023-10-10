@@ -33,8 +33,8 @@ import {
     [CONNECTED]: 'Disconnect',
   };
   
-  const INITIAL_HOSTNAME = '' //import.meta.env.VITE_ROBOT_HOSTNAME ?? '';
-  const INITIAL_SECRET = '' //import.meta.env.VITE_ROBOT_SECRET ?? '';
+  const INITIAL_HOSTNAME = 'mac-air-main.t7do9d9645.viam.cloud' //import.meta.env.VITE_ROBOT_HOSTNAME ?? '';
+  const INITIAL_SECRET = 't17cgb8pfbc2kniqhp9nfie3wom3m2ojg9d13jkh15h1zlrt' //import.meta.env.VITE_ROBOT_SECRET ?? '';
   
   export const ConnectForm = (props: ConnectFormProps): JSX.Element => {
     const { status, onSubmit } = props;

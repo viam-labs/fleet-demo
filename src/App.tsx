@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import MachineList from "./components/MachineList";
 import MachineDetails from "./components/MachineDetails";
 import Layout from "./components/Layout";
@@ -11,6 +11,7 @@ import { VideoStream } from './components/VideoStream';
 import { MotionArrows } from './components/MotionArrows';
 import { useMotionControls } from './motion';
 import {useStore as appStore} from './appState'
+import ViamAppData from "./components/ViamAppData";
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
                 requestMotion={requestMotion}
               />
             ) : null}</VideoStream></>} />
+          <Route path="/viamappdata" element={ appClient ? <ViamAppData client={appClient} /> : <Navigate to="/viamapp" />}></Route>
         </Route>
       </Routes>
     </>
